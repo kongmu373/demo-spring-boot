@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MyMapper">
+    <select id="selectRankItemList" resultMap="rankItem">
+select match.USER_ID user_id, U.NAME user_name, sum(match.SCORE) sum_score
+from match
+         INNER JOIN USER U on match.USER_ID = U.ID
+group by match.USER_ID;
+    </select>
+    <resultMap id="rankItem" type="kongmu373.entity.Rank">
+        <result property="score" column="SUM_SCORE"/>
+        <association property="user" javaType="kongmu373.entity.User">
+            <id property="id" column="USER_ID"/>
+            <result property="name" column="USER_NAME"/>
+        </association>
+    </resultMap>
+</mapper>
