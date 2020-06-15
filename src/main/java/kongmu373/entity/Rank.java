@@ -1,6 +1,8 @@
 package kongmu373.entity;
 
-public class Rank {
+import java.io.Serializable;
+
+public class Rank implements Serializable {
     private int score;
     private User user;
 
