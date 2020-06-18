@@ -14,6 +14,7 @@ public class RankDao {
     @Autowired
     private SqlSession sqlSession;
 
+
     @Cache
     public List<Rank> selectRankItemList() {
         return sqlSession.selectList("MyMapper.selectRankItemList");

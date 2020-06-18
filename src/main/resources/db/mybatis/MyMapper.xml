@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyMapper">
     <select id="selectRankItemList" resultMap="rankItem">
-select match.USER_ID user_id, U.NAME user_name, sum(match.SCORE) sum_score
-from match
-         INNER JOIN USER U on match.USER_ID = U.ID
-group by match.USER_ID;
+select `match`.USER_ID user_id, U.NAME user_name, sum(`match`.SCORE) sum_score
+from `match`
+         INNER JOIN user U on `match`.USER_ID = U.ID
+group by `match`.USER_ID;
     </select>
     <resultMap id="rankItem" type="kongmu373.entity.Rank">
         <result property="score" column="SUM_SCORE"/>
